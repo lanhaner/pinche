@@ -1,0 +1,15 @@
+page{
+  background-color: #F6F6F6;
+}
+.text-center{
+  text-align: center;
+}
+.grey{
+  color:#CCC;
+}
+.myrow{
+  margin:20rpx 0;
+  padding:40rpx 0 30rpx;
+  border-bottom:2rpx solid #f1f1f1;
+  background-color: #fff;
+}

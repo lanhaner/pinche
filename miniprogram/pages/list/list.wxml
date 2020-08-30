@@ -1,0 +1,10 @@
+<!--pages/list/list.wxml-->
+<van-divider contentPosition="center">以发布时间倒序排列</van-divider>
+<block wx:if="{{pList!=[]}}">
+	<van-cell-group wx:for="{{pList}}" wx:key="key" title="{{item.pTime}}发车">
+		<van-cell title="{{item.pStart}} 至 {{item.pEnd}}" is-link link-type="navigateTo" value="{{item.view}}人关注" url="/pages/detail/detail?id={{item._id}}" />
+	</van-cell-group>
+</block>
+<block wx:else>
+	<van-empty description="啥都没有" />
+</block>

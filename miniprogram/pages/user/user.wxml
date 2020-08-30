@@ -1,0 +1,16 @@
+<block wx:if="{{!isLogged}}">
+	<view style="display:flex;flex-direction:column;justify-content:center">
+		<van-button open-type="getUserInfo" bind:getuserinfo="getUserInfo" type="primary" block> 授权获取微信头像昵称 </van-button>
+	</view>
+</block>
+<block wx:else>
+	<view style="background:#fff;height:400rpx;display: flex;align-items: center;justify-content: center;">
+		<van-image round width="100rpx" height="100rpx" src="{{avatar}}" />
+		<view>{{name}} • {{province}}</view>
+	</view>
+
+	<view style="padding:40rpx 0">
+		<van-cell title="我发布的" is-link icon="location-o" link-type="navigateTo"
+  url="/pages/list/list"/>
+	</view>
+</block>

@@ -1,0 +1,52 @@
+<!--pages/detail/detail.wxml-->
+<van-skeleton title avatar row="5" loading="{{ loading }}">
+
+	<van-row custom-class="myrow" gutter="5">
+		<van-col span="4" offset="1">
+			<van-image round width="90rpx" height="90rpx" src="{{pAvatar}}" />
+		</van-col>
+		<van-col span="15">
+			<view>{{pNickName}} {{pCar}} {{pCarNo}}</view>
+			<view class="grey" style="display:flex;">
+				<van-icon name="eye-o" size="18" /> {{view}}</view>
+		</van-col>
+		<van-col span="4">
+			<view class="text-center">
+				<van-button icon="phone-o" type="primary" size="small" bind:click="callMaster" data-masterPhone="{{pPhone}}"></van-button>
+			</view>
+		</van-col>
+	</van-row>
+
+	<van-cell-group title="{{pTime}}">
+		<van-cell title="起点：{{pStart}}" icon="logistics" border="{{ true }}" />
+		<van-cell title="途径：{{pMiddle==''?'直达':pMiddle}}" icon="arrow-down" border="{{ true }}" />
+		<van-cell title="终点：{{pEnd}}" icon="location-o" border="{{ true }}" />
+		<van-cell title="共{{pPerson}}座 {{pPrice}}元/位" icon="balance-o" border="{{ true }}" />
+	</van-cell-group>
+
+	<van-row gutter="5" wx:for="{{pList}}" wx:key="mobile">
+		<block wx:if="{{ item.mobile == ''}}">
+			<block wx:if="{{ index == pList.length -1 && !userIdIn }}">
+				<van-col span="9">
+					<van-field value="{{ guestNickname }}" placeholder="10字以内昵称" border="{{ true }}" bind:blur="onBlurName" bind:change="onChangeName" maxlength="10" error-message="{{error_guestNickname}}" />
+				</van-col>
+				<van-col span="9">
+					<van-field value="{{ guestMobile }}" placeholder="手机" border="{{ true }}" type="number" maxlength="11" bind:blur="onBlurMobile" bind:change="onChangeMobile" error-message="{{error_guestMobile}}" />
+				</van-col>
+				<van-col span="6" style="text-align:right;">
+					<van-button type="primary" bind:click="signUp">捎上我</van-button>
+				</van-col>
+			</block>
+		</block>
+		<block wx:else>
+			<van-col span="24">
+				<van-cell-group title="已抢座" wx:if="{{index==0}}">
+				</van-cell-group>
+				<van-cell title="{{index + 1}}. {{ item.name }}" icon="like-o" border="{{ true }}" />
+				<van-cell wx:if="{{index == pList.length-1}}" title="哎哟，座都被你们抢完了！手够快的呀！没少剁手吧~" border="{{ true }}" />
+			</van-col>
+		</block>
+	</van-row>
+
+
+</van-skeleton>

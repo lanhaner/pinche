@@ -1,0 +1,6 @@
+page {
+  font-size: 14px;
+  font-size: var(--cell-font-size, 14px);
+  line-height: 24px;
+  line-height: var(--cell-line-height, 24px);
+}
